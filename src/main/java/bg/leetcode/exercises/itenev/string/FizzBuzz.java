@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev;
+package bg.leetcode.exercises.itenev.string;
 
 import java.util.ArrayList;
 import java.util.List;
