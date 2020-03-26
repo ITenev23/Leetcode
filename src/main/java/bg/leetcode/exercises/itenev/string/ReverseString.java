@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ReverseString {
 
     public static String reverseWithRecursion(String s) {
-        if ((null == s) || (s.length() <= 1)) {
+        if (null == s || s.length() <= 1) {
             return s;
         }
         return reverseWithRecursion(s.substring(1)) + s.charAt(0);
