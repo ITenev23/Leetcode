@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev.array;
+package bg.leetcode.exercises.itenev.binary_search;
 
 /**
  * Given an array where elements are sorted in ascending order,
