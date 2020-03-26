@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev;
+package bg.leetcode.exercises.itenev.stack;
 
 import java.util.Stack;
 
