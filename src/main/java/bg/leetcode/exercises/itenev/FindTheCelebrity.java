@@ -4,6 +4,7 @@ public class FindTheCelebrity {
 
     /* The knows API is defined in the parent class */
     private static boolean knows(int a, int b) {
+        //returns true if A knows B
         return true;
     }
 
