@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class FindAllNumbersDisappearedInArray {
 
-    public List<Integer> findDisappearedNumbers(int[] nums) {
+    public static List<Integer> findDisappearedNumbers(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 1; i <= nums.length; i++) {
             set.add(i);
@@ -27,7 +27,7 @@ public class FindAllNumbersDisappearedInArray {
         return new ArrayList<>(set);
     }
 
-    public List<Integer> findDisappearedNumbers2(int[] nums) {
+    public static List<Integer> findDisappearedNumbers2(int[] nums) {
         List<Integer> res = new ArrayList<>();
         int[] store = new int[nums.length + 1];
 
