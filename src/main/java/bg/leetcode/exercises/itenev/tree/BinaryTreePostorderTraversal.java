@@ -9,11 +9,11 @@ import java.util.List;
  * Given a binary tree, return the postorder traversal of its nodes' values.
  * <p>
  * Input: [1,null,2,3]
- * 1
- * \
- * 2
- * /
- * 3
+ *     1
+ *     \
+ *      2
+ *     /
+ *    3
  * <p>
  * Output: [3,2,1]
  */
