@@ -34,6 +34,7 @@ public class BattleshipsBoard {
                     continue;
                 if (j > 0 && board[i][j - 1] == 'X')
                     continue;
+
                 battleships++;
             }
         }
