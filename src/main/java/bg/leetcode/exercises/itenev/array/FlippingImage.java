@@ -37,16 +37,19 @@ public class FlippingImage {
 
     public int[][] flipAndInvertImage2(int[][] A) {
         for (int i = 0; i < A.length; i++) {
-            int j = 0;
-            int k = A[i].length - 1;
-            while (j < k) {
-                int temp = A[i][j];
-                A[i][j++] = A[i][k];
-                A[i][k--] = temp;
+            int left = 0;
+            int right = A[i].length - 1;
+
+            //swap elements
+            while (left < right) {
+                int temp = A[i][left];
+                A[i][left++] = A[i][right];
+                A[i][right--] = temp;
             }
 
+            //swap 1 with 0 and vise versa
             for (int l = 0; l < A[i].length; l++) {
-                A[i][j] = A[i][j] == 1 ? 0 : 1;
+                A[i][left] = A[i][left] == 1 ? 0 : 1;
             }
         }
 
