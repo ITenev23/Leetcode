@@ -32,6 +32,19 @@ public class ReversedLinkedList {
         return prev;
     }
 
+    public static ListNode reverseList2(ListNode head) {
+        ListNode prev = null;
+
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+
+        return prev;
+    }
+
     public static ListNode reverseListRecursive(ListNode head) {
         if (head == null || head.next == null)
             return head;
@@ -42,7 +55,7 @@ public class ReversedLinkedList {
         return p;
     }
 
-    public static ListNode reverseList2(ListNode head) {
+    public static ListNode reverseList3(ListNode head) {
         Stack<ListNode> stack = new Stack<>();
         while (head != null) {
             stack.push(head);

@@ -26,7 +26,7 @@ public class DecodeWays {
             int oneDigit = Integer.parseInt(s.substring(i - 1, i));
             int twoDigit = Integer.parseInt(s.substring(i - 2, i));
 
-            if (oneDigit >= twoDigit)
+            if (oneDigit >= 1)
                 dp[i] += dp[i - 1];
 
             if (twoDigit >= 10 && twoDigit <= 26)
