@@ -1,7 +1,9 @@
 package bg.leetcode.exercises.itenev.tree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Given an n-ary tree, return the preorder traversal of its nodes' values.
@@ -40,18 +42,6 @@ public class N_aryTreePreOrderTraversal {
         return result;
     }
 
-    public List<Integer> preorderBottomUp(Node root) {
-        if (root == null)
-            return new ArrayList<>();
-
-        List<Integer> res = new ArrayList<>();
-        res.add(root.val);
-        for (Node node : root.children) {
-            res.addAll(preorderBottomUp(node));
-        }
-        return res;
-    }
-
     private void preorderRecursive(Node root, List<Integer> nodes) {
         if (root == null)
             return;
@@ -64,5 +54,40 @@ public class N_aryTreePreOrderTraversal {
         for (Node child : root.children) {
             preorderRecursive(child, nodes);
         }
+    }
+
+    public List<Integer> preorder2(Node root) {
+        List<Integer> result = new ArrayList<>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Stack<Node> toVisit = new Stack<>();
+        toVisit.push(root);
+
+        while (!toVisit.isEmpty()) {
+            Node visited = toVisit.pop();
+            result.add(visited.val);
+            Collections.reverse(visited.children);
+            for (Node n : visited.children) {
+                if (n != null) {
+                    toVisit.push(n);
+                }
+            }
+        }
+        return result;
+    }
+
+    public List<Integer> preorderBottomUp(Node root) {
+        if (root == null)
+            return new ArrayList<>();
+
+        List<Integer> res = new ArrayList<>();
+        res.add(root.val);
+        for (Node node : root.children) {
+            res.addAll(preorderBottomUp(node));
+        }
+        return res;
     }
 }
