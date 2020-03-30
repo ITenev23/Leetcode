@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev.tree;
+package bg.leetcode.exercises.itenev.common;
 
 public class TreeNode {
     public int val;

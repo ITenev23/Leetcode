@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.tree;
 
+import bg.leetcode.exercises.itenev.common.TreeNode;
+
 /**
  * Find the sum of all left leaves in a given binary tree.
  * <p>

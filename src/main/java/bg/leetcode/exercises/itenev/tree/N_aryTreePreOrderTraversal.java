@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.tree;
 
+import bg.leetcode.exercises.itenev.common.Node;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
