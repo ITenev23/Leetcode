@@ -13,16 +13,6 @@ import java.util.List;
  */
 public class BinaryTreeInorderTraversal {
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public List<Integer> inorderTraversalRecursive(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         inorder(root, res);

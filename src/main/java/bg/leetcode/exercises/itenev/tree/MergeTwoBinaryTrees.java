@@ -29,13 +29,6 @@ import java.util.Stack;
  */
 public class MergeTwoBinaryTrees {
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-
     /**
      * Time complexity : O(m)O(m).
      * A total of mm nodes need to be traversed.
