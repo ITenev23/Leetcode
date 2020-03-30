@@ -13,7 +13,7 @@ package bg.leetcode.exercises.itenev.linked_list.Math;
  */
 public class AddTwoNumbers {
 
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 
@@ -22,7 +22,7 @@ public class AddTwoNumbers {
         }
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode head = dummy;
         int carry = 0;
@@ -47,6 +47,6 @@ public class AddTwoNumbers {
             head.next = new ListNode(carry);
 
         return dummy.next;
-
     }
+
 }
