@@ -12,7 +12,7 @@ package bg.leetcode.exercises.itenev.linked_list.Math;
  * Explanation: 342 + 465 = 807.
  */
 public class AddTwoNumbers {
-
+/**
     private static class ListNode {
         int val;
         ListNode next;
@@ -48,5 +48,6 @@ public class AddTwoNumbers {
 
         return dummy.next;
     }
+ */
 
 }
