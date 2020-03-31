@@ -64,15 +64,15 @@ public class N_aryTreeReconstruction {
      * 4 : {7}
      */
     public static TreeNode constructTree(List<int[]> pairs) {
-        Map<Integer, List<Integer>> adjList = new HashMap<>();
+        Map<Integer, List<Integer>> adjacency = new HashMap<>();
         Set<Integer> visited = new HashSet<>();
 
         for(int[] p : pairs) {
-            adjList.computeIfAbsent(p[0], k -> new ArrayList<>()).add(p[1]);
+            adjacency.computeIfAbsent(p[0], k -> new ArrayList<>()).add(p[1]);
         }
 
         TreeNode root = new TreeNode(pairs.get(0)[0]);
-        dfs(root, adjList, visited);
+        dfs(root, adjacency, visited);
         return root;
     }
 
