@@ -28,13 +28,14 @@ public class BasicCalculator {
      * 7.Add the last num. This is because we only add number after '+' / '-'.
      */
     public int calculate(String s) {
-        if(s == null) return 0;
+        if(s == null)
+            return 0;
 
         int result = 0;
         int sign = 1;
         int num = 0;
 
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         stack.push(sign);
 
         for(int i = 0; i < s.length(); i++) {
