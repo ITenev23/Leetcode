@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev.Math;
+package bg.leetcode.exercises.itenev.math;
 
 import java.util.*;
 

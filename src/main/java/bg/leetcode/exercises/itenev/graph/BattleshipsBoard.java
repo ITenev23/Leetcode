@@ -42,6 +42,8 @@ public class BattleshipsBoard {
         return battleships;
     }
 
+    /*****************************************************************/
+
     public int countBattleships2(char[][] board) {
         int battleships = 0;
 
