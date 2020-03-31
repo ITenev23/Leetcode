@@ -42,6 +42,8 @@ public class MergeTwoSortedLinkedLists {
         return dummy;
     }
 
+    /*****************************************************************************/
+
     public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
         head.next = l1;
@@ -63,4 +65,5 @@ public class MergeTwoSortedLinkedLists {
 
         return dummy.next;
     }
+
 }
