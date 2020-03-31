@@ -21,10 +21,6 @@ import java.util.List;
 public class FlipGame {
     private static final String MOVE = "--";
 
-    public static void main(String[] args) {
-        generatePossibleNextMoves("--++-++++----++");
-    }
-
     public static List<String> generatePossibleNextMoves(String s) {
         List<String> possibleStates = new ArrayList<>();
         int i = 0;
