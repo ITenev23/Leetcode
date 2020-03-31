@@ -1,7 +1,5 @@
 package bg.leetcode.exercises.itenev.string;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +34,6 @@ public class ReverseVowels {
             chars[right--] = temp;
         }
 
-//        return Arrays.toString(chars);
         return new String(chars);
     }
 
@@ -61,14 +58,14 @@ public class ReverseVowels {
         int i = 0, j = s.length() - 1;
         char[] chars = s.toCharArray();
         String vowels = "aeiouAEIOU";
-        while(i < j) {
-            while(i < j && vowels.indexOf(chars[i]) == -1) {
+        while (i < j) {
+            while (i < j && vowels.indexOf(chars[i]) == -1) {
                 i++;
             }
-            while(i < j && vowels.indexOf(chars[j]) == -1) {
+            while (i < j && vowels.indexOf(chars[j]) == -1) {
                 j--;
             }
-            if(i < j) {
+            if (i < j) {
                 char temp = chars[i];
                 chars[i++] = chars[j];
                 chars[j--] = temp;
