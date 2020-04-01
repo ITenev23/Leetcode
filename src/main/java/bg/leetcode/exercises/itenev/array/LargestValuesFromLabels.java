@@ -1,9 +1,6 @@
 package bg.leetcode.exercises.itenev.array;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * We have a set of items: the i-th item has value values[i] and label labels[i].
@@ -36,11 +33,6 @@ public class LargestValuesFromLabels {
         }
     }
 
-    /**
-     * Sort the array by value.
-     * Traverse the array to pick largest item as far as possible until the size of set hit num_wanted.
-     * If use_limit take effect, skip current item.
-     */
     public int largestValsFromLabels(int[] values, int[] labels, int num_wanted, int use_limit) {
         Number[] numArray = new Number[values.length];
         for(int i = 0; i < values.length; i++)
@@ -49,15 +41,15 @@ public class LargestValuesFromLabels {
         Arrays.sort(numArray, (n1, n2) -> n2.value - n1.value);
 
         int result = 0;
-        Map<Integer, Integer> labelToFreq = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         for (Number number : numArray) {
-            labelToFreq.putIfAbsent(number.label, 0);
-            if (labelToFreq.get(number.label) >= use_limit)
+            map.putIfAbsent(number.label, 0);
+            if (map.get(number.label) >= use_limit)
                 continue;
 
             result += number.value;
-            labelToFreq.put(number.label, labelToFreq.get(number.label) + 1);
+            map.put(number.label, map.get(number.label) + 1);
             num_wanted--;
 
             if (num_wanted == 0)
@@ -65,6 +57,32 @@ public class LargestValuesFromLabels {
 
         }
         return result;
+    }
+
+    /********/
+
+    public int largestValsFromLabels2(int[] values, int[] labels, int num_wanted, int use_limit) {
+        List<Number> items = new ArrayList<>();
+        for(int i = 0; i < values.length; i++)
+            items.add(new Number(values[i], labels[i]));
+
+        PriorityQueue<Number> maxHeap = new PriorityQueue<>(
+                (a,b) -> b.value - a.value
+        );
+        maxHeap.addAll(items);
+
+        int value = 0;
+        Map<Integer, Integer> counts = new HashMap<>();
+
+        while (!maxHeap.isEmpty() && num_wanted > 0){
+            Number current = maxHeap.remove();
+            counts.put(current.label, counts.getOrDefault(current.label, 0) + 1);
+            if (counts.get(current.label) <= use_limit){
+                value += current.value;
+                num_wanted--;
+            }
+        }
+        return value;
     }
 
 }
