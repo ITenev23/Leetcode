@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev.dfs;
+package bg.leetcode.exercises.itenev.array.dfs;
 
 /**
  * An image is represented by a 2-D array of integers,
