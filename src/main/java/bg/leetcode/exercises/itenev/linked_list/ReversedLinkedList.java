@@ -1,6 +1,7 @@
 package bg.leetcode.exercises.itenev.linked_list;
 
 import bg.leetcode.exercises.LeetcodeApplication;
+import bg.leetcode.exercises.itenev.common.ListNode;
 
 import java.util.Stack;
 
@@ -11,12 +12,6 @@ import java.util.Stack;
  * Output: 5->4->3->2->1->NULL
  */
 public class ReversedLinkedList {
-
-    private  static class ListNode {
-        int val;
-        ListNode next;
-        public ListNode(int x) { val = x; }
-    }
 
     public static ListNode reverseList(ListNode head) {
         ListNode current = head;

@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.linked_list;
 
+import bg.leetcode.exercises.itenev.common.ListNode;
+
 /**
  * Reverse a linked list from position m to n. Do it in one-pass.
  * <p>
@@ -9,15 +11,6 @@ package bg.leetcode.exercises.itenev.linked_list;
  * Output: 1->4->3->2->5->NULL
  */
 public class ReversedLinkedListII {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode reverseBetween(ListNode head, int m, int n) {
         if (head == null)

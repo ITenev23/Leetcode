@@ -1,15 +1,8 @@
 package bg.leetcode.exercises.itenev.linked_list;
 
+import bg.leetcode.exercises.itenev.common.ListNode;
+
 public class ReverseLinkedListPairWise {
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public static void reverse(ListNode node) {
         while (node != null && node.next != null) {

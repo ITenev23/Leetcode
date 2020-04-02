@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.linked_list;
 
+import bg.leetcode.exercises.itenev.common.ListNode;
+
 import java.util.PriorityQueue;
 
 /**
@@ -14,15 +16,6 @@ import java.util.PriorityQueue;
  * Output: 1->1->2->3->4->4->5->6
  */
 public class MergeKSortedLists {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode mergeKLists(ListNode[] lists) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();

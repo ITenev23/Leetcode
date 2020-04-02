@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.linked_list;
 
+import bg.leetcode.exercises.itenev.common.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +15,6 @@ import java.util.List;
  * Output: true
  */
 public class PalindromeLinkedList {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode reverseLinkedList(ListNode head) {
         ListNode prev = null;
