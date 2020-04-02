@@ -62,10 +62,10 @@ public class BinaryTreeLevelOrderTraversalII {
     }
 
     public void dfs(List<List<Integer>> result, TreeNode root, int level) {
-        if (root == null) return;
-        if (level >= result.size()) {
+        if (root == null)
+            return;
+        if (level >= result.size())
             result.add(0, new LinkedList<>());
-        }
 
         dfs(result, root.left, level + 1);
         dfs(result, root.right, level + 1);
