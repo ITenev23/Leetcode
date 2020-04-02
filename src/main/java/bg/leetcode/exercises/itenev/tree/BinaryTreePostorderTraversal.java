@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class BinaryTreePostorderTraversal {
 
-    public List<Integer> postorderTraversal(TreeNode root) {
+    public static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null)
             return result;
