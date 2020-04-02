@@ -12,10 +12,6 @@ import java.util.Arrays;
  */
 public class MaximumSubarray {
 
-    public static void main(String[] args) {
-        maxSubArrayOptimized(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
-    }
-
     /**
      * Notice that dp[i] only depends on dp[i-1].
      * So instead of storing all the results in the dp array,
@@ -51,7 +47,6 @@ public class MaximumSubarray {
     }
 
     /*************************************************************************/
-
 
     public static int maxSubArray(int[] nums) {
         if (nums.length == 1) return nums[0];
@@ -103,13 +98,10 @@ public class MaximumSubarray {
             return A[left];
 
         int mid = left + (right - left) / 2;
-        int leftsum = subArray(A, left, mid); //left part of the subarray sum, condition 1
-        int rightsum = subArray(A, mid + 1, right); //right part of the subarray sum, condition 2
-        int middlesum = midSubArray(A, left, mid, right); //cross part of the subarray sum, condition 3
-        System.out.println(leftsum);
-        System.out.println(rightsum);
-        System.out.println(middlesum);
-        System.out.println("--------------------------------------------------------");
+        int leftsum = subArray(A, left, mid);
+        int rightsum = subArray(A, mid + 1, right);
+        int middlesum = midSubArray(A, left, mid, right);
+
         if (leftsum >= rightsum && leftsum >= middlesum)
             return leftsum;
 
