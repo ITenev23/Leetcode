@@ -15,4 +15,17 @@ public class NthFibonacci {
         return n > 1 ? lastTwo[1] : lastTwo[0];
     }
 
+    /*************************************************/
+
+    public static long fib(int n, long[] memo){
+        if (memo[n] != 0)
+            return memo[n];
+        if (n < 3)
+            return 1;
+
+        long result = fib(n - 1, memo) + fib(n - 2, memo);
+        memo[n] = result;
+        return result;
+    }
+
 }
