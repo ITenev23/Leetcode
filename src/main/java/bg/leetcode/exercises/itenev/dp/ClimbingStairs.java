@@ -29,11 +29,15 @@ public class ClimbingStairs {
         return dp[n];
     }
 
+    /****************************************************/
+
     public int climbStairsFibonacciFormula(int n) {
         double sqrt5 = Math.sqrt(5);
         double fibn = Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);
         return (int) (fibn / sqrt5);
     }
+
+    /****************************************************/
 
     public int climbStairsFibonacci(int n) {
         if (n == 1) {
@@ -48,6 +52,8 @@ public class ClimbingStairs {
         }
         return second;
     }
+
+    /****************************************************/
 
     public int climbStairsRecursive(int n) {
         return climb_Stairs(0, n, new int[n + 1]);
