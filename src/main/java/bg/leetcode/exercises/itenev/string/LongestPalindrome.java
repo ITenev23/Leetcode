@@ -75,10 +75,7 @@ public class LongestPalindrome {
         int oddNum = 0;
 
         for (char ch : s.toCharArray())
-            if (hash.containsKey(ch))
-                hash.put(ch, hash.get(ch) + 1);
-            else
-                hash.put(ch, 1);
+            hash.put(ch, hash.getOrDefault(ch, 0) + 1);
 
 
         for (Map.Entry<Character, Integer> entry : hash.entrySet())
