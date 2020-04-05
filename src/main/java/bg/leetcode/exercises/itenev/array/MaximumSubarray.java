@@ -21,11 +21,12 @@ public class MaximumSubarray {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException();
         }
-        int maxEndingHere = nums[0];
+        int sum = nums[0];
         int maxSum = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            maxEndingHere = Math.max(maxEndingHere + nums[i], nums[i]);
-            maxSum = Math.max(maxSum, maxEndingHere);
+            sum += nums[i];
+            sum = Math.max(sum, nums[i]);
+            maxSum = Math.max(maxSum, sum);
         }
         return maxSum;
     }
