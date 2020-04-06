@@ -38,6 +38,8 @@ public class IntersectionOfTwoArrays {
         return result;
     }
 
+    /****************************************************************/
+
     public int[] intersection2(int[] nums1, int[] nums2) {
         if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0)
             return new int[0];
