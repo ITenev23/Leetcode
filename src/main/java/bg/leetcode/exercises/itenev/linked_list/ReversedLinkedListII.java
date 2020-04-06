@@ -43,6 +43,8 @@ public class ReversedLinkedListII {
         return dummy.next;
     }
 
+    /****************************************************************/
+
     public ListNode reverseBetween2(ListNode head, int m, int n) {
         if (head == null)
             return null;
@@ -58,7 +60,8 @@ public class ReversedLinkedListII {
         }
 
         // The two pointers that will fix the final connections.
-        ListNode con = prev, tail = cur;
+        ListNode con = prev;
+        ListNode tail = cur;
 
         // Iteratively reverse the nodes until n becomes 0.
         ListNode third = null;
@@ -79,6 +82,7 @@ public class ReversedLinkedListII {
         return head;
     }
 
+    /****************************************************************/
 
     // Object level variables since we need the changes
     // to persist across recursive calls and Java is pass by value.
