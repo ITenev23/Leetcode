@@ -52,6 +52,7 @@ public class WordBreak {
                     String sub = s.substring(j, i + 1);
                     if (wordDict.contains(sub)) {
                         dp[i] = true;
+                        break;
                     }
                 }
             }
