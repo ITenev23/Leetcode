@@ -20,7 +20,7 @@ public class IntersectionTwoArraysII {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
 
-        List<Integer> intersection = new ArrayList();
+        List<Integer> intersection = new ArrayList<>();
 
         for (int i = 0, j = 0; i < nums1.length && j < nums2.length;  ) {
             if (nums1[i] == nums2[j]) {
