@@ -4,11 +4,15 @@ package bg.leetcode.exercises.itenev.dp;
  * Given a list of non-negative integers nums representing the amount of money hidden in each house,
  * determine the maximum amount of money you can rob in one night without triggering an alarm.
  * <p>
- * For nums = [4, 7, 1], the output should be
- * houseRobber(nums) = 7.
+ * Input: [1,2,3,1]
+ * Output: 4
+ * Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+ *              Total amount you can rob = 1 + 3 = 4.
  * <p>
- * For nums = [4, 6, 3], the output should be
- * houseRobber(nums) = 7.
+ * Input: [2,7,9,3,1]
+ * Output: 12
+ * Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+ *              Total amount you can rob = 2 + 9 + 1 = 12.
  */
 public class HouseRobber {
 
@@ -20,6 +24,21 @@ public class HouseRobber {
         }
 
         return b;
+    }
+
+    /********************************************/
+
+    public int rob(int[] num) {
+        int currentHouse = 0;
+        int max = 0;
+
+        for (int value : num) {
+            int temp = max + value;
+            max = Math.max(max, currentHouse);
+            currentHouse = temp;
+        }
+
+        return Math.max(currentHouse, max);
     }
 
     /********************************************/

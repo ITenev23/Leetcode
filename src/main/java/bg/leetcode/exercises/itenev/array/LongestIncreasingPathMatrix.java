@@ -34,27 +34,28 @@ public class LongestIncreasingPathMatrix {
 
         for (int row = 0; row < matrix.length; row++)
             for (int col = 0; col < matrix[row].length; col++)
-                result = Math.max(result, findLongest(matrix, row, col, Integer.MIN_VALUE, memo));
+                result = Math.max(result, dfs(matrix, row, col, Integer.MIN_VALUE, memo));
 
 
         return result;
     }
 
-    public int findLongest(int[][] matrix, int row, int col, int pre, int[][] memo) {
+    public int dfs(int[][] matrix, int row, int col, int pre, int[][] memo) {
         if (row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length || matrix[row][col] <= pre)
             return 0;
 
         if (memo[row][col] > 0)
             return memo[row][col];
 
-        int curr = matrix[row][col];
-        int tempMax = 0;
-        tempMax = Math.max(tempMax, findLongest(matrix, row - 1, col, curr, memo));
-        tempMax = Math.max(tempMax, findLongest(matrix, row + 1, col, curr, memo));
-        tempMax = Math.max(tempMax, findLongest(matrix, row, col - 1, curr, memo));
-        tempMax = Math.max(tempMax, findLongest(matrix, row, col + 1, curr, memo));
-        memo[row][col] = tempMax + 1;
+        int current = matrix[row][col];
+        int max = 0;
 
+        max = Math.max(max, dfs(matrix, row - 1, col, current, memo));
+        max = Math.max(max, dfs(matrix, row + 1, col, current, memo));
+        max = Math.max(max, dfs(matrix, row, col - 1, current, memo));
+        max = Math.max(max, dfs(matrix, row, col + 1, current, memo));
+
+        memo[row][col] = max + 1;
         return memo[row][col];
     }
 
@@ -71,7 +72,7 @@ public class LongestIncreasingPathMatrix {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (memo[i][j] == 0)
-                    dfs(matrix, memo, i, j, xShift, yShift);
+                    dfs2(matrix, memo, i, j, xShift, yShift);
 
                 result = Math.max(result, memo[i][j]);
             }
@@ -79,7 +80,7 @@ public class LongestIncreasingPathMatrix {
         return result;
     }
 
-    private void dfs(int[][] matrix, int[][] longestLength, int x, int y, int[] xShift, int[] yShift) {
+    private void dfs2(int[][] matrix, int[][] longestLength, int x, int y, int[] xShift, int[] yShift) {
         longestLength[x][y] = 1;
 
         for (int i = 0; i < 4; i++) {
@@ -89,7 +90,7 @@ public class LongestIncreasingPathMatrix {
             if (newX < matrix.length && newX >= 0
                     && newY < matrix[0].length && newY >= 0 && matrix[x][y] < matrix[newX][newY]) {
                 if (longestLength[newX][newY] == 0) {
-                    dfs(matrix, longestLength, newX, newY, xShift, yShift);
+                    dfs2(matrix, longestLength, newX, newY, xShift, yShift);
                 }
                 longestLength[x][y] = Math.max(longestLength[x][y], 1 + longestLength[newX][newY]);
             }
