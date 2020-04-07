@@ -37,6 +37,8 @@ public class LongestPalindromicSubstring {
         return s.substring(start, end + 1);
     }
 
+    /***************************************************************/
+
     public String longestPalindrome2(String s) {
         if (s == null || s.length() < 1)
             return "";
@@ -66,6 +68,8 @@ public class LongestPalindromicSubstring {
         }
         return R - L - 1;
     }
+
+    /***************************************************************/
 
 
     StringBuilder longest = new StringBuilder("");
