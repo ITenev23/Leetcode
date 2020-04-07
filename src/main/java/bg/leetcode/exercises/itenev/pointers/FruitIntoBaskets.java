@@ -65,6 +65,8 @@ public class FruitIntoBaskets {
         return ans;
     }
 
+    /********************************************************************/
+
     public int totalFruit(int[] tree) {
         if (tree == null || tree.length == 0)
             return 0;
