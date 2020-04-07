@@ -34,6 +34,8 @@ public class PathSum {
                     hasPathSum(root.right, sum - root.val);
     }
 
+    /*******************************************/
+
     public boolean hasPathSum2(TreeNode root, int sum) {
         if (root == null)
             return false;

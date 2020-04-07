@@ -20,14 +20,14 @@ import java.util.List;
  */
 public class SurroundSubstrings {
 
-    public static void test() {
+    public static void main(String[] args) {
         String[] words = {"apple", "Melon", "Orange", "Watermelon"};
         String[] parts = {"a", "mel", "lon", "el", "An"};
 
         List<String> result = transform(Arrays.asList(words), Arrays.asList(parts));
 
-        for (String r : result) {
-            System.out.println(r);
+        for (String r : words) {
+            System.out.print(surroundString3(r, parts) + " ");
         }
     }
 
@@ -56,6 +56,8 @@ public class SurroundSubstrings {
         }
         return result;
     }
+
+    /****************************************************************************/
 
     public static List<String> transform2(String[] words, String[] parts) {
         List<String> output = new ArrayList<>();
@@ -91,6 +93,8 @@ public class SurroundSubstrings {
         }
         return output;
     }
+
+    /****************************************************************************/
 
     public static String surroundString3(String word, String[] parts) {
         int start = -1;

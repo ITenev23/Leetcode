@@ -13,12 +13,12 @@ public class ReverseLinkedListPairWise {
         }
     }
 
-    public static void reverseRecursive(ListNode node) {
-        if (node != null && node.next != null) {
-            int tmp = node.val;
-            node.val = node.next.val;
-            node.next.val = tmp;
-            reverseRecursive(node.next.next);
+    public static void reverseRecursive(ListNode head) {
+        if (head != null && head.next != null) {
+            int tmp = head.val;
+            head.val = head.next.val;
+            head.next.val = tmp;
+            reverseRecursive(head.next.next);
         }
     }
 
