@@ -56,6 +56,8 @@ public class StringToInteger {
         return (int) (result * sign);
     }
 
+    /**************************************************************************************/
+
     public int myAtoi2(String str) {
         if (str == null || str.trim().length() == 0) {
             return 0;
@@ -90,6 +92,8 @@ public class StringToInteger {
 
         return neg * res;
     }
+
+    /**************************************************************************************/
 
     public int myAtoi3(String str) {
 

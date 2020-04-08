@@ -16,6 +16,20 @@ package bg.leetcode.exercises.itenev.string;
 public class ValidPalindrome {
 
     public boolean isPalindrome(String s) {
+        s = s.replaceAll("[^\\w]+", "").toLowerCase();
+        int l = 0;
+        int r = s.length() - 1;
+
+        while (l < r) {
+            if (s.charAt(l++) != s.charAt(r--))
+                return false;
+        }
+        return true;
+    }
+
+    /****************************************************************************/
+
+    public boolean isPalindrome2(String s) {
         //left & right pointers
         int l = 0;
         int r = s.length() - 1;
@@ -35,7 +49,9 @@ public class ValidPalindrome {
         return true;
     }
 
-    public boolean isPalindrome2(String s) {
+    /****************************************************************************/
+
+    public boolean isPalindrome3(String s) {
         s = s.replaceAll("[^\\w]+", "").toLowerCase();
         int left = s.length() / 2 - 1;
         int right = s.length() % 2 == 0 ? s.length() / 2 : s.length() / 2 + 1;
@@ -47,7 +63,9 @@ public class ValidPalindrome {
         return true;
     }
 
-    public boolean isPalindrome3(String s) {
+    /****************************************************************************/
+
+    public boolean isPalindrome4(String s) {
         char[] arr = s.toCharArray();
         int i = 0;
         int j = arr.length - 1;
