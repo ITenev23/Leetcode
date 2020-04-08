@@ -36,16 +36,29 @@ package bg.leetcode.exercises.itenev.array;
 public class RotateImage {
 
     public void rotate(int[][] matrix) {
-        int size = matrix.length;
-        for (int i = 0; i < size / 2; ++i) {
-            int j = size - 1 - i;
-            for (int p = i; p < j; ++p) {
-                int q = size - 1 - p;
-                int cache = matrix[i][p];
-                matrix[i][p] = matrix[q][i];
-                matrix[q][i] = matrix[j][q];
-                matrix[j][q] = matrix[p][j];
-                matrix[p][j] = cache;
+        int size = matrix.length - 1;
+        int mid = matrix.length / 2;
+
+        for (int first = 0; first < mid; ++first) {
+            int last = size - first;
+
+            for (int i = first; i < last; ++i) {
+                int offset = i - first;
+                int j = last - offset;
+
+                int top = matrix[first][i];
+                int right = matrix[i][last];
+                int left = matrix[j][first];
+                int bottom = matrix[last][j];
+
+                //left -> top
+                matrix[first][i] = left;
+                //bottom -> left
+                matrix[last - offset][first] = bottom;
+                //right -> bottom
+                matrix[last][last - offset] = right;
+                //top -> right
+                matrix[i][last] = top;
             }
         }
     }

@@ -38,16 +38,26 @@ import java.util.Set;
  */
 public class ValidSudoku {
 
+    private static final String ROW = " in row ";
+    private static final String COLUMN = " in column ";
+    private static final String BLOCK = " in block ";
+    private static final String DASH = "-";
+
     public boolean isValidSudoku(char[][] board) {
         Set<String> seen = new HashSet<>();
+
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
-                char number = board[i][j];
-                if (number != '.')
-                    if (!seen.add(number + " in row " + i) ||
-                            !seen.add(number + " in column " + j) ||
-                            !seen.add(number + " in block " + i / 3 + "-" + j / 3))
+                char current = board[i][j];
+
+                if (current != '.') {
+                    boolean condition1 = !seen.add(current + ROW + i);
+                    boolean condition2 = !seen.add(current + COLUMN + j);
+                    boolean condition3 = !seen.add(current + BLOCK + i / 3 + DASH + j / 3);
+
+                    if (condition1 || condition2 || condition3)
                         return false;
+                }
             }
         }
         return true;
@@ -82,8 +92,8 @@ public class ValidSudoku {
     /**********************************************************/
 
     public boolean isValidSudoku3(char[][] board) {
-        for(int i = 0; i < 9; i++) {
-            if(!isValid(board, i, i, 0, 8) ||
+        for (int i = 0; i < 9; i++) {
+            if (!isValid(board, i, i, 0, 8) ||
                     !isValid(board, 0, 8, i, i) ||
                     !isValid(board, i / 3 * 3, i / 3 * 3 + 2, i % 3 * 3, i % 3 * 3 + 2))
                 return false;
@@ -94,9 +104,9 @@ public class ValidSudoku {
 
     public boolean isValid(char[][] board, int xStart, int xEnd, int yStart, int yEnd) {
         HashSet<Integer> set = new HashSet<Integer>();
-        for(int x = xStart; x <= xEnd; x++) {
-            for(int y = yStart; y <= yEnd; y++) {
-                if(board[x][y] != '.' && !set.add(board[x][y] - '0')) return false;
+        for (int x = xStart; x <= xEnd; x++) {
+            for (int y = yStart; y <= yEnd; y++) {
+                if (board[x][y] != '.' && !set.add(board[x][y] - '0')) return false;
             }
         }
         return true;
