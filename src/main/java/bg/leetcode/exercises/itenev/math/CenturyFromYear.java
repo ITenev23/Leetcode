@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.math;
 
+import java.util.Arrays;
+
 public class CenturyFromYear {
 
     public int getCentury(int year) {
