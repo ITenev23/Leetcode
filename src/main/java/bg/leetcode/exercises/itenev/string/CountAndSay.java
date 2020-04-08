@@ -46,6 +46,8 @@ public class CountAndSay {
         return res.toString();
     }
 
+    /*****************************************************/
+
     public String countAndSay2(int n) {
         StringBuilder curr = new StringBuilder("1");
         StringBuilder prev;
