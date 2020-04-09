@@ -1,5 +1,17 @@
 package bg.leetcode.exercises.itenev.array;
 
+/**
+ * Given an unsorted integer array, find the smallest missing positive integer.
+ *
+ * Input: [1,2,0]
+ * Output: 3
+ *
+ * Input: [3,4,-1,1]
+ * Output: 2
+ *
+ * Input: [7,8,9,11,12]
+ * Output: 1
+ */
 public class FirstMissingPositive {
 
     public int firstMissingPositive(int[] nums) {
