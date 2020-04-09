@@ -2,6 +2,8 @@ package bg.leetcode.exercises.itenev.tree;
 
 import bg.leetcode.exercises.itenev.common.TreeNode;
 
+import java.util.Arrays;
+
 /**
  * Given an array where elements are sorted in ascending order,
  * convert it to a height balanced BST.
@@ -21,24 +23,37 @@ import bg.leetcode.exercises.itenev.common.TreeNode;
  */
 public class ConvertSortedArrayToBSTree {
 
-     public TreeNode sortedArrayToBST(int[] nums) {
-     if (nums == null || nums.length == 0)
-     return null;
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return null;
 
-     return constructBSTRecursive(nums, 0, nums.length - 1);
-     }
+        return constructBSTRecursive(nums, 0, nums.length - 1);
+    }
 
-     private TreeNode constructBSTRecursive(int[] nums, int left, int right) {
-     if (left > right)
-     return null;
+    private TreeNode constructBSTRecursive(int[] nums, int left, int right) {
+        if (left > right)
+            return null;
 
-     int mid = left + (right - left) / 2;
+        int mid = left + (right - left) / 2;
 
-     TreeNode current = new TreeNode(nums[mid]);
-     current.left = constructBSTRecursive(nums, left, mid - 1);
-     current.right = constructBSTRecursive(nums, mid + 1, right);
+        TreeNode current = new TreeNode(nums[mid]);
+        current.left = constructBSTRecursive(nums, left, mid - 1);
+        current.right = constructBSTRecursive(nums, mid + 1, right);
 
-     return current;
-     }
+        return current;
+    }
+
+    /***************************************************************/
+
+    public TreeNode sortedArrayToBST2(int[] nums) {
+        if (nums.length == 0)
+             return null;
+
+        int mid = nums.length / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = sortedArrayToBST(Arrays.copyOfRange(nums, 0, mid));
+        root.right = sortedArrayToBST(Arrays.copyOfRange(nums, mid + 1, nums.length));
+        return root;
+    }
 
 }
