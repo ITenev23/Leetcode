@@ -7,19 +7,19 @@ import java.util.*;
  * 1. the value 0 representing an empty cell;
  * 2. the value 1 representing a fresh orange;
  * 3. the value 2 representing a rotten orange.
- *
+ * <p>
  * Every minute, any fresh orange that is adjacent (4-directionally) to a rotten orange becomes rotten.
  * Return the minimum number of minutes that must elapse until no cell has a fresh orange.
  * If this is impossible, return -1 instead.
- *
+ * <p>
  * Input: [[2,1,1],[1,1,0],[0,1,1]]
  * Output: 4
- *
+ * <p>
  * Input: [[2,1,1],[0,1,1],[1,0,1]]
  * Output: -1
  * Explanation:  The orange in the bottom left corner (row 2, column 0) is never rotten,
  * because rotting only happens 4-directionally.
- *
+ * <p>
  * Input: [[0,2]]
  * Output: 0
  * Explanation:  Since there are already no fresh oranges at minute 0, the answer is just 0.
@@ -29,6 +29,7 @@ public class RottingOranges {
     static class Position {
         int x;
         int y;
+
         Position(int x, int y) {
             this.x = x;
             this.y = y;
@@ -54,7 +55,7 @@ public class RottingOranges {
         // if there is no orange, return 0;
         if (allOranges == 0) return 0;
 
-        while (! q.isEmpty() && rotten < allOranges) {
+        while (!q.isEmpty() && rotten < allOranges) {
             // size is the num of rotten oranges of the last round
             int size = q.size();
 
@@ -105,20 +106,20 @@ public class RottingOranges {
         int minutes = -1;
         int freshCount = 0;
 
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[0].length; j++){
-                if(grid[i][j] == 2) queue.offer(new int[]{i, j}); //gathering rotten oranges to queue
-                else if(grid[i][j] == 1) freshCount++;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 2) queue.offer(new int[]{i, j}); //gathering rotten oranges to queue
+                else if (grid[i][j] == 1) freshCount++;
             }
         }
 
-        if(freshCount == 0) return 0; //there is no fresh orange.
-        if(queue.size() == 0) return -1; //there is noting to rotten.
+        if (freshCount == 0) return 0; //there is no fresh orange.
+        if (queue.size() == 0) return -1; //there is noting to rotten.
 
         while (!queue.isEmpty()) {
             minutes++;
             int size = queue.size(); //Rotten oranges simultaneously affect adjacent fresh oranges.
-            for(int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) {
                 //if using queue.size() instead of size, it will be not working properly, beacuse queue is changeable.
                 int[] now = queue.poll();
                 for (int[] dir : dirs) { //find fresh oragnes from adjacent directions.
@@ -176,12 +177,118 @@ public class RottingOranges {
             }
         }
 
-        for (int[] row: grid)
-            for (int v: row)
+        for (int[] row : grid)
+            for (int v : row)
                 if (v == 1)
                     return -1;
         return ans;
 
+    }
+
+    /******************************************************************************/
+
+    public int[] findRedundantConnection4(int[][] edges) {
+        int n = edges.length + 1;
+        UF uf = new UF(n);
+
+        for (int[] e : edges) {
+            if (!uf.union(e[0], e[1]))
+                return e;
+        }
+        return null;
+    }
+
+    private static class UF {
+        int[] sub;
+
+        public UF(int size) {
+            sub = new int[size];
+            for (int i = 0; i < size; i++) {
+                sub[i] = i;
+
+            }
+        }
+
+        int find(int x) {
+            if (x != sub[x]) {
+                sub[x] = find(sub[x]);
+            }
+            return sub[x];
+        }
+
+        boolean union(int x, int y) {
+            int xr = find(x);
+            int yr = find(y);
+
+            //if they are already part of same parent return false, they don't need to
+            //combine
+            if (xr == yr)
+                return false;
+
+            sub[xr] = find(yr);
+            return true;
+        }
+    }
+
+    /******************************************************************************/
+
+    public int[] findRedundantConnection5(int[][] edges) {
+        int n = edges.length + 1;
+        Union uf = new Union(n);
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        List<int[]> l = new ArrayList<>();
+        for (int[] e : edges) {
+            if (!uf.union(e[0], e[1])) l.add(e);
+        }
+        for (int[] i : l) {
+            System.out.println(Arrays.toString(i));
+        }
+        return l.get(l.size() - 1);
+    }
+
+    private static class Union {
+        Subset[] sub;
+
+        public Union(int size) {
+            sub = new Subset[size];
+            for (int i = 0; i < size; i++) {
+                sub[i] = new Subset();
+                sub[i].parent = i;
+                sub[i].rank = 0;
+            }
+        }
+
+        int find(int x) {
+            if (x != sub[x].parent) {
+                sub[x].parent = find(sub[x].parent);
+            }
+            return sub[x].parent;
+        }
+
+        boolean union(int x, int y) {
+            int xr = find(x);
+            int yr = find(y);
+
+            //if they are already part of same parent return false, they don't need to
+            //combine
+            if (xr == yr)
+                return false;
+
+            if (sub[xr].parent < sub[yr].parent) {
+                sub[xr].parent = sub[yr].parent;
+            } else if (sub[xr].parent > sub[yr].parent) {
+                sub[yr].parent = sub[xr].parent;
+            } else {
+                sub[xr].parent = sub[yr].parent;
+                sub[yr].rank++;
+            }
+            return true;
+        }
+    }
+
+    private static class Subset {
+        int parent;
+        int rank;
     }
 
 }
