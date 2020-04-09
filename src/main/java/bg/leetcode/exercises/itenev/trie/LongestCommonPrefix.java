@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev.string;
+package bg.leetcode.exercises.itenev.trie;
 
 /**
  * Write a function to find the longest common prefix string amongst an array of strings.
@@ -115,7 +115,7 @@ public class LongestCommonPrefix {
         return trie.searchLongestPrefix(q);
     }
 
-    public static class TrieNode {
+    private static class TrieNode {
 
         // R links to node children
         private TrieNode[] links;
@@ -151,7 +151,7 @@ public class LongestCommonPrefix {
         }
     }
 
-    public static class Trie {
+    private static class Trie {
 
         private TrieNode root;
 

@@ -1,4 +1,4 @@
-package bg.leetcode.exercises.itenev.string;
+package bg.leetcode.exercises.itenev.trie;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +57,7 @@ public class ReplaceSubstring {
         }
     }
 
-    static class Trie {
+    private static class Trie {
         TrieNode root;
 
         Trie(String[] array) {
