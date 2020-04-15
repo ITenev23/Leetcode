@@ -37,4 +37,23 @@ public class AddBinary {
         return sb.toString();
     }
 
+    /******************************************************************************/
+
+    public String addBinary2(String a, String b) {
+        int size1 = a.length();
+        int size2 = b.length();
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+
+        while (Math.max(size1, size2) > 0) {
+            int first = size1 > 0 ? (a.charAt(size1-- - 1) - '0') : 0;
+            int second = size2 > 0 ? (b.charAt(size2-- - 1) - '0') : 0;
+            int sum = first + second + carry;
+
+            sb.append(sum % 2);
+            carry = sum / 2;
+        }
+        return (carry == 1) ? sb.append(1).reverse().toString() : sb.reverse().toString();
+    }
+
 }

@@ -1,5 +1,7 @@
 package bg.leetcode.exercises.itenev.stack;
 
+import bg.leetcode.exercises.itenev.common.Pair;
+
 import java.util.*;
 
 /**
@@ -124,15 +126,5 @@ public class WordLadder {
         }
 
         return 0;
-    }
-
-    public static class Pair<S, I> {
-        S key;
-        I value;
-
-        public Pair(S key, I value) {
-            this.key = key;
-            this.value = value;
-        }
     }
 }
